@@ -1,0 +1,78 @@
+From 0a524bc5d59db85751b18abc98425bbe1f7c8a93 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E8=B0=93=E5=A5=87?= <liuyunzhuo.lyz@alibaba-inc.com>
+Date: Fri, 24 May 2024 06:49:35 -0400
+Subject: [PATCH] fastiov
+
+---
+ drivers/virtio/virtio_ring.c | 48 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/drivers/virtio/virtio_ring.c b/drivers/virtio/virtio_ring.c
+index 643ca77..dbf7c98 100644
+--- a/drivers/virtio/virtio_ring.c
++++ b/drivers/virtio/virtio_ring.c
+@@ -1790,6 +1790,52 @@ err_ring:
+ }
+ 
+ 
++// 触发 EPT fault 并建立 GPA 到 HPA 的映射关系
++static void trigger_ept_faults_for_sgl(struct scatterlist *sg, unsigned int total_pages) {
++    unsigned int i;
++	volatile char *buffer;
++	char data;
++
++    for (i = 0; i < total_pages; ++i) {
++        // 计算该页在 scatterlist buffer 中的偏移
++        unsigned int offset = i * PAGE_SIZE;
++        // 计算该页的物理地址（GPA）
++        //phys_addr_t page_phys_addr = sg_phys(sg) + offset;
++		buffer = phys_to_virt(sg_phys(sg) + offset);
++		data = *buffer;
++        //*(volatile char *)page_phys_addr = *page_phys_addr;
++    }
++}
++
++static inline void print_and_ept_fault_vring_buffer(struct scatterlist *sgs[], 
++                                                          unsigned int total_sg) {
++    unsigned int i, total_pages;
++    struct scatterlist *sg;
++
++    // 遍历所有的 scatterlist 元素
++    for (i = 0; i < total_sg; ++i) {
++        sg = sgs[i];
++        
++        // 由于 scatterlist 可能被链成链表, 遍历链表的每个元素
++        while (sg) {
++            // sg_phys 返回 scatterlist 元素的物理地址（GPA）
++            // sg->length 包含了缓冲区长度
++            
++			/*
++			printk(KERN_INFO "scatterlist buffer address-%u: %llx, size: %u\n",
++                    i, (unsigned long long)sg_phys(sg), sg->length);
++			*/
++
++			//trigger EPT fault 
++			total_pages = (sg->length + PAGE_SIZE - 1) >> PAGE_SHIFT;
++			trigger_ept_faults_for_sgl(sg, total_pages);
++
++            sg = sg_next(sg); // 获取链表中的下一个元素
++        }
++    }
++}
++
++
+ /*
+  * Generic functions and exported symbols.
+  */
+@@ -1805,6 +1851,8 @@ static inline int virtqueue_add(struct virtqueue *_vq,
+ {
+ 	struct vring_virtqueue *vq = to_vvq(_vq);
+ 
++	if (in_sgs > 0) print_and_ept_fault_vring_buffer(sgs, total_sg);
++
+ 	return vq->packed_ring ? virtqueue_add_packed(_vq, sgs, total_sg,
+ 					out_sgs, in_sgs, data, ctx, gfp) :
+ 				 virtqueue_add_split(_vq, sgs, total_sg,
+-- 
+2.39.3
+

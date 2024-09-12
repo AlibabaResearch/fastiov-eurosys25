@@ -1,0 +1,47 @@
+#! /bin/bash
+
+while getopts "rnx" opt; do
+  case ${opt} in
+    r )
+      remove_flag="-r"
+      ;;
+    n )
+      no_network_flag="-n"
+      ;;
+    x )
+      no_clean_flag="-x"
+      ;;
+    \? )
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+DIR=$(dirname $0)
+source $DIR/time_test.conf
+
+start_date=$(date +%m%d%H%M)
+mkdir -p "$DIR/../logs"
+base_dir="$DIR/../logs/$(printf "time_runc_%s" $start_date)"
+mkdir -p ${base_dir}
+version="${base_dir}/versions.txt"
+uname -r >> $version
+containerd --version >> $version
+crictl --version >> $version
+
+for test_concurrency in ${concurency[@]}; do
+    if [ $(( $test_concurrency % $test_tenants )) -eq 0 ]; then
+        echo "--- runc: $test_concurrency concurrency, $test_tenants tenants ---"
+        export result_dir=$(printf "%s/con_%03d" $base_dir $test_concurrency)
+        $DIR/closedloop_net.sh -c $test_concurrency -t $test_tenants -i $test_iters -p runc $remove_flag $no_network_flag $no_clean_flag
+        if [[ $? != 0 ]]; then
+            exit $?
+        fi
+    else
+        echo "concurrency $test_concurrency can be divided by tenants $test_tenants, skip..."
+    fi
+done
+
+echo "exiting all closedloop_net scripts..."
+pkill closedloop_net

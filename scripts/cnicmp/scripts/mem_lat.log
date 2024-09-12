@@ -1,0 +1,40 @@
+2024-05-02T13:41:36.833562486+08:00 stdout F Accessing 1024 bytes of memory took 0.000000305 seconds.
+2024-05-02T13:41:36.8335984+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000056 seconds.
+2024-05-02T13:41:52.886039344+08:00 stdout F Accessing 1024 bytes of memory took 0.000000300 seconds.
+2024-05-02T13:41:52.88605072+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000020 seconds.
+2024-05-02T13:42:08.930570815+08:00 stdout F Accessing 1024 bytes of memory took 0.000000268 seconds.
+2024-05-02T13:42:08.930609401+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000053 seconds.
+2024-05-02T13:42:42.279026846+08:00 stdout F Accessing 1024 bytes of memory took 0.000000234 seconds.
+2024-05-02T13:42:42.279059937+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000064 seconds.
+2024-05-02T13:42:58.344554394+08:00 stdout F Accessing 1024 bytes of memory took 0.000000340 seconds.
+2024-05-02T13:42:58.344594969+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000088 seconds.
+2024-05-02T13:43:21.71676532+08:00 stdout F Accessing 1024 bytes of memory took 0.000000361 seconds.
+2024-05-02T13:43:21.716810045+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000048 seconds.
+2024-05-02T13:43:47.574344473+08:00 stdout F Accessing 1024 bytes of memory took 0.000000259 seconds.
+2024-05-02T13:43:47.574382566+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000015 seconds.
+2024-05-02T13:44:01.417808552+08:00 stdout F Accessing 1024 bytes of memory took 0.000000367 seconds.
+2024-05-02T13:44:01.417847278+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000133 seconds.
+2024-05-02T13:44:15.074230393+08:00 stdout F Accessing 1024 bytes of memory took 0.000000313 seconds.
+2024-05-02T13:44:15.074278805+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000052 seconds.
+2024-05-02T13:44:39.520539815+08:00 stdout F Accessing 1024 bytes of memory took 0.000000293 seconds.
+2024-05-02T13:44:39.520580269+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000040 seconds.
+2024-05-02T13:58:33.213277426+08:00 stdout F Accessing 1024 bytes of memory took 0.000000323 seconds.
+2024-05-02T13:58:33.213316456+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000059 seconds.
+2024-05-02T13:58:46.924243038+08:00 stdout F Accessing 1024 bytes of memory took 0.000000342 seconds.
+2024-05-02T13:58:46.924283416+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000036 seconds.
+2024-05-02T13:58:58.741607621+08:00 stdout F Accessing 1024 bytes of memory took 0.000000283 seconds.
+2024-05-02T13:58:58.74164997+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000021 seconds.
+2024-05-02T13:59:08.989631956+08:00 stdout F Accessing 1024 bytes of memory took 0.000000313 seconds.
+2024-05-02T13:59:08.989673863+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000052 seconds.
+2024-05-02T14:00:16.017888392+08:00 stdout F Accessing 1024 bytes of memory took 0.000000341 seconds.
+2024-05-02T14:00:16.017937427+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000089 seconds.
+2024-05-02T14:00:47.568381185+08:00 stdout F Accessing 1024 bytes of memory took 0.000000353 seconds.
+2024-05-02T14:00:47.568416792+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000071 seconds.
+2024-05-02T14:01:00.937048672+08:00 stdout F Accessing 1024 bytes of memory took 0.000000306 seconds.
+2024-05-02T14:01:00.937077908+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000045 seconds.
+2024-05-02T14:01:28.205761676+08:00 stdout F Accessing 1024 bytes of memory took 0.000000321 seconds.
+2024-05-02T14:01:28.205804124+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000059 seconds.
+2024-05-02T14:01:39.098920394+08:00 stdout F Accessing 1024 bytes of memory took 0.000000341 seconds.
+2024-05-02T14:01:39.098982199+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000059 seconds.
+2024-05-02T14:01:54.69000135+08:00 stdout F Accessing 1024 bytes of memory took 0.000000266 seconds.
+2024-05-02T14:01:54.690047836+08:00 stdout F Accessing 1024 bytes of memory for the second time took 0.000000031 seconds.

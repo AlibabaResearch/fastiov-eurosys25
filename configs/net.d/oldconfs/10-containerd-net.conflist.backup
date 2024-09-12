@@ -1,0 +1,32 @@
+{
+  "cniVersion": "0.3.1",
+  "name": "containerd-net",
+  "plugins": [
+    {
+      "type": "ovs-ipvlan",
+      "bridge": "br0",
+      "acl": 0,
+      "qos": 0,
+      "port": "tap0",
+      "vlan": 100,
+      "mode": "l2",
+      "debug": true,
+      "cmd": true,
+      "rpc": false,
+      "tcOvsFlow": false,
+      "poolType": "ipvtap",
+      "ipam": {
+        "type": "host-local",
+        "ranges": [
+          [{
+            "subnet": "10.91.0.0/16"
+          }]
+        ],
+        "routes": [
+          { "dst": "0.0.0.0/0" },
+          { "dst": "::/0" }
+        ]
+      }
+    }
+  ]
+}
